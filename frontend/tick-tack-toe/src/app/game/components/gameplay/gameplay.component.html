@@ -2,38 +2,41 @@
 <div class = "ui">
   <div class="row">
     <input type="text" id= "b1"
-           class="cell" (click)="move('b1');"
-           readonly>
+           class="cell" (click)="move('b1');" readonly [placeholder]="game[0]">
+
     <input type="text" id= "b2"
            class="cell" (click)="move('b2');"
-           readonly>
+           readonly [placeholder]="game[1]">
     <input type="text" id= "b3" class="cell"
            (click)="move('b3');"
-           readonly>
+           readonly [placeholder]="game[2]">
   </div>
 
   <div class="row">
     <input type="text" id= "b4"
            class="cell" (click)="move('b4');"
-           readonly>
+           readonly [placeholder]="game[3]">
     <input type="text" id= "b5"
            class="cell" (click)="move('b5');"
-           readonly>
+           readonly [placeholder]="game[4]">
     <input type="text" id= "b6" class="cell"
            (click)="move('b6');"
-           readonly>
+           readonly [placeholder]="game[5]">
   </div>
 
   <div class="row">
     <input type="text" id= "b7"
            class="cell" (click)="move('b7');"
-           readonly>
+           readonly [placeholder]="game[6]">
     <input type="text" id= "b8"
            class="cell" (click)="move('b8');"
-           readonly>
+           readonly [placeholder]="game[7]">
     <input type="text" id= "b9" class="cell"
            (click)="move('b9');"
-           readonly>
+           readonly [placeholder]="game[8]">
   </div>
 </div>
+
+<i class="material-icons">close</i>
+<i class="material-icons">radio_button_unchecked</i>
 <br><br><br>

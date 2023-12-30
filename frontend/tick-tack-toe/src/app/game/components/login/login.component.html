@@ -1,0 +1,21 @@
+<!-- Default form login -->
+<form class="text-center border border-light p-5">
+  <p class="h4 mb-4">Sign in</p>
+  <!-- Email -->
+  <input type="text" id="defaultLoginFormUsername" class="form-control mb-4" [(ngModel)]="username" placeholder="Username" name="username">
+  <!-- Password -->
+  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" [(ngModel)]="password" placeholder="Password" name="password">
+  <div class="d-flex justify-content-around">
+  </div>
+  <!-- Sign in button -->
+  <button mdbBtn color="info" block="true" class="my-4" type="submit" (click)="onSubmit()">Sign in</button>
+  <!-- Register -->
+  <p>Not a member?
+    <a [routerLink]="['/register']">Register</a>
+<!--    <a class="col-1" [routerLink]="['register']">-->
+<!--      <button type="button" class="btn"> </button>-->
+<!--    </a>-->
+<!--    <button mdbBtn class="my-4" >Register</button>-->
+  </p>
+</form>
+<router-outlet></router-outlet>
