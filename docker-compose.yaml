@@ -1,0 +1,31 @@
+version: "3.4"
+services:
+
+  backend:
+    container_name: backend
+    hostname: backend
+    build:
+      dockerfile: backend/Dockerfile
+      target: "backend"
+    ports:
+      - "8080:8080"
+    networks:
+      - priv-network
+
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    build:
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "4200:80"
+    volumes: # Volume binding
+      - './frontend/tick-tack-toe:/usr/src/app'
+#    command: >
+#      sh -c "npm start"
+    networks:
+      - priv-network
+
+networks:
+  priv-network:
+    driver: bridge
