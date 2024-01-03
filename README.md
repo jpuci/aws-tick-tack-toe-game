@@ -24,3 +24,29 @@ aws cognito-idp admin-initiate-auth --user-pool-id %USER POOL ID% --client-id %A
 ```
 aws cognito-idp admin-respond-to-auth-challenge --user-pool-id %USER POOL ID% --client-id %CLIENT ID% --challenge-name NEW_PASSWORD_REQUIRED --challenge-responses NEW_PASSWORD=%DESIRED PASSWORD%,USERNAME=%USERS USERNAME%,SECRET_HASH=%CALCULATED SECRET HASH% --session %SESSION KEY FROM PREVIOUS COMMAND with ""%
 ```
+Pushing docker image to docker registry:
+```
+docker tag image-name user-name/repo-name
+```
+
+```
+docker push user-name/repo-name
+```
+
+To make sure that the host can be set in angular I configured the following files:
+.env.js
+environment.ts
+to get the hostname.
+
+In the spring boot application the cross.origin property was moved to application.properties and is then read from a .env file.
+
+To copy ec2-setup.sh to ec2 instance:
+```
+scp -i /path/to/your-key.pem /path/to/your-script.sh ec2-user@your-ec2-instance-public-dns:/path/on/ec2/instance
+
+```
+Make it executable:
+```
+chmod +x your-script.sh
+```
+Run it. 
