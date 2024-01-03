@@ -1,6 +1,7 @@
 package app.example.app.Controllers;
 
 
+import app.example.app.Entities.Ask;
 import app.example.app.Entities.Game;
 import app.example.app.Entities.Greeting;
 import app.example.app.Entities.HelloMessage;
@@ -19,9 +20,20 @@ public class GreetingController {
     GameRepository gameRepository;
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    public Greeting greeting() throws Exception {
-        Game game = new Game();
-        gameRepository.save(game);
-        return new Greeting(game.getId().toString());
+    public Ask ask(HelloMessage message) throws Exception {
+        Game game = gameRepository.findGameByGameStatus("Not Started");
+        if (game != null){
+            game.setUser2(HtmlUtils.htmlEscape(message.getUsername()));
+            game.setGameStatus("Started");
+            gameRepository.save(game);
+            return new Ask("matched", game.getId());
+
+        } else {
+            Game newGame = new Game();
+            newGame.setUser1(HtmlUtils.htmlEscape(message.getUsername()));
+            gameRepository.save(newGame);
+            return new Ask("waiting for match");
+        }
+
     }
 }

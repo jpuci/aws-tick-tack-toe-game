@@ -15,13 +15,15 @@ import {RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from '@angular
 import {RouterTestingModule} from "@angular/router/testing";
 import {UserService} from "./game/services/user.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { WaitingComponent } from './game/components/waiting/waiting.component';
 @NgModule({
   declarations: [
     AppComponent,
     GameplayComponent,
     MessagesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    WaitingComponent
   ],
   imports: [
     BrowserModule,

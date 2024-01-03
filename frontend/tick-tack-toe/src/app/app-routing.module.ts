@@ -4,6 +4,7 @@ import {GameplayComponent} from "./game/components/gameplay/gameplay.component";
 import {RegisterComponent} from "./game/components/register/register.component";
 import {AppComponent} from "./app.component";
 import {LoginComponent} from "./game/components/login/login.component";
+import {WaitingComponent} from "./game/components/waiting/waiting.component";
 
 const routes: Routes = [
   {
@@ -29,12 +30,8 @@ const routes: Routes = [
     component: GameplayComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'register2',
-    component: RegisterComponent
+    path: 'waiting',
+    component: WaitingComponent
   }
 
 ];

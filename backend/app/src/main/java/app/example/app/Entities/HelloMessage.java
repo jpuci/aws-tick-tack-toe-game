@@ -2,20 +2,20 @@ package app.example.app.Entities;
 
 public class HelloMessage {
 
-    private String name;
+    private String username;
 
     public HelloMessage() {
     }
 
     public HelloMessage(String name) {
-        this.name = name;
+        this.username = name;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

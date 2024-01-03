@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
-import * as JWT from 'jwt-decode';
+
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   helper = new JwtHelperService();
+  private baseURL = 'http://' + `${environment.location}`
   constructor(private http: HttpClient) { }
   login(credentials: any): Observable<any> {
-    console.log(`${environment.baseURL}/login`)
-    return this.http.post<any>(`${environment.baseURL}/login`, credentials);
+    // console.log(`${environment.baseURL}/login`)
+    return this.http.post<any>(`${(this.baseURL)}/login`, credentials);
   }
 
   getToken(): string {

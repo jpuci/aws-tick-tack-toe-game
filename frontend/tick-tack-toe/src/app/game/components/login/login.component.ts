@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit{
           localStorage.setItem("username", this.username)
           // localStorage.setItem(environment.LOCAL_STORAGE_USER_ID, response.userId)
           localStorage.setItem("jwtToken", response.token)
-          this.router.navigate(['/game']);
+          this.router.navigate(['/waiting']);
           // this.parentComponent.setUsername();
         })).subscribe();
   }
