@@ -50,3 +50,6 @@ Make it executable:
 chmod +x your-script.sh
 ```
 Run it. 
+
+Instructions on how to dynamically set Angular environment variables in Docker can be found [here](https://pumpingco.de/blog/environment-variables-angular-docker/)
+
