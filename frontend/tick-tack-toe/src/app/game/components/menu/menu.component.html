@@ -1,0 +1,30 @@
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    <a class="navbar-brand" href="#">Game Menu</a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--      <ul class="navbar-nav">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" [routerLink]="['/waiting']">Play</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" [routerLink]="['/leaderboard']">Leaderboard</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--</div>-->
+<html>
+
+
+<body>
+<div class="container">
+  <button type="button" class="btn btn-primary" (click)="navigateTo('/waiting')">Play</button>
+  <button type="button" class="btn btn-secondary" (click)="navigateTo('/leaderboard')">Leaderboard</button>
+  <button type="button" class="btn btn-secondary" (click)="logout()">Log out</button>
+</div>
+</body>
+</html>

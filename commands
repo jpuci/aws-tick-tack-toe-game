@@ -1,0 +1,23 @@
+
+#create the domain.env file
+	rm -f domain.env
+	echo "BASE_URL=ec2-3-80-252-61.compute-1.amazonaws.com" >> domain.env
+	echo "CROSS_ORIGIN=http://ec2-3-80-252-61.compute-1.amazonaws.com" >> domain.env
+
+#start docker
+	docker compose -f docker-compose-ec2.yaml up -d --build
+
+#stop docker
+	docker compose -f docker-compose-ec2.yaml down
+
+#ssh into the ec2
+	ssh -i game-aws.pem ec2-user@ec2-3-80-252-61.compute-1.amazonaws.com
+
+#pull docker images
+	docker compose -f docker-compose-ec2.yaml pull
+
+
+
+#copy .env and docker-compose files
+	scp -i game-aws.pem .env ec2-user@ec2-3-80-252-61.compute-1.amazonaws.com:/home/ec2-user/
+	scp -i  game-aws.pem docker-compose-ec2.yaml ec2-user@ec2-52-90-216-153.compute-1.amazonaws.com

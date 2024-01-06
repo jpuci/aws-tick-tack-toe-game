@@ -10,10 +10,9 @@ import {environment} from "../../../environments/environment";
 })
 export class UserService {
   helper = new JwtHelperService();
-  private baseURL = 'http://' + `${environment.location}`
+  private baseURL = 'http://' + `${environment.location}` + ':8080'
   constructor(private http: HttpClient) { }
   login(credentials: any): Observable<any> {
-    // console.log(`${environment.baseURL}/login`)
     return this.http.post<any>(`${(this.baseURL)}/login`, credentials);
   }
 
@@ -24,13 +23,13 @@ export class UserService {
   isAuthenticated(): boolean {
     const token = this.getToken();
     if (token) {
-      const decodedToken: any = this.helper.decodeToken(token); // Decode the token
-      const expirationDate = new Date(decodedToken.exp * 1000); // Convert the expiration date to milliseconds
+      const decodedToken: any = this.helper.decodeToken(token);
+      const expirationDate = new Date(decodedToken.exp * 1000);
       const currentDate = new Date();
 
-      return expirationDate > currentDate; // Check if the token is not expired
+      return expirationDate > currentDate;
     }
 
-    return false; // Return false if the token is not found
+    return false;
   }
 }

@@ -18,13 +18,17 @@ export class WaitingComponent implements OnInit {
   ngOnInit(): void {
     this.rxStompService.watch('/topic/greetings').subscribe((message: Message) => {
       this.receivedMessages.push(JSON.parse(message.body).status);
-      localStorage.setItem("gameId", JSON.parse(message.body).gameId)
-      if (JSON.parse(message.body).status == "matched" && !localStorage.getItem("playAs")){
-        localStorage.setItem("playAs", "X");
-        this.router.navigate(['/game']);
-      } else {
+      localStorage.setItem("gameId", JSON.parse(message.body).gameId);
+      console.log(message);
 
-        localStorage.setItem("playAs", "O")
+      if (JSON.parse(message.body).user2 === localStorage.getItem("username")){
+        localStorage.setItem("playAs", "X");
+      } else if (JSON.parse(message.body).user1 === localStorage.getItem("username")){
+        localStorage.setItem("playAs", "O");
+      }
+
+      if (JSON.parse(message.body).status == "matched"){
+        this.router.navigate(['/game']);
       }
 
 

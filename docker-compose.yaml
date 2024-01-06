@@ -11,6 +11,10 @@ services:
       - "8080:8080"
     networks:
       - priv-network
+    environment:
+      AWS_ACCESS_KEY_ID: ASIATOSGM3KSAHFXSEHZ
+      AWS_SECRET_KEY: JO9+nNutkKfImuAHqr2LPxN0CRbvaw5Z2hYr0DPm
+      CROSS_ORIGIN: http://localhost:4200
 
   frontend:
     container_name: frontend
@@ -25,6 +29,8 @@ services:
 #      sh -c "npm start"
     networks:
       - priv-network
+    environment:
+      BASE_URL: localhost
 
 networks:
   priv-network:

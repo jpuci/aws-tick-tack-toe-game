@@ -1,3 +1,24 @@
+<body>
+<h1 *ngIf="won">
+  Congratulations, you won!
+</h1>
+
+<h1 *ngIf="lost">
+  Sorry, maybe next time!
+</h1>
+
+<h1 *ngIf="draw">
+  Sorry, it's a draw!
+</h1>
+
+<h2 *ngIf="canMove">
+  Your turn!
+</h2>
+
+<h2 *ngIf="!canMove && !(won || lost || draw)">
+  Your opponent's move
+</h2>
+<span class="material-icons" [routerLink]="['/menu']">chevron_left</span>
 
 <div class = "ui">
   <div class="row">
@@ -37,6 +58,16 @@
   </div>
 </div>
 
-<i class="material-icons">close</i>
-<i class="material-icons">radio_button_unchecked</i>
+<div class="button-container" *ngIf="won || lost || draw">
+  <button (click)="onPlayAgain()" type="button" class="btn btn-primary">
+    Play again
+  </button>
+  <button [routerLink]="['../menu']" type="button" class="btn btn-secondary">
+    Menu
+  </button>
+</div>
+
+<!--<i class="material-icons">close</i>-->
+<!--<i class="material-icons">radio_button_unchecked</i>-->
 <br><br><br>
+</body>

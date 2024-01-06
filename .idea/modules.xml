@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/aws-tick-tack-toe.iml" filepath="$PROJECT_DIR$/.idea/aws-tick-tack-toe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/aws-tic-tac-toe.iml" filepath="$PROJECT_DIR$/.idea/aws-tic-tac-toe.iml" />
     </modules>
   </component>
 </project>

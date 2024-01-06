@@ -1,37 +1,40 @@
 package app.example.app.Entities;
 
 public class Move {
-    private Integer id;
-    private Integer moveType;
 
-    private Integer gameId;
+    private String board;
 
-    public Move(Integer id, Integer moveType) {
-        this.id = id;
-        this.moveType = moveType;
+    private String moveType;
+
+    private Long gameId;
+
+    public String getBoard() {
+        return board;
     }
 
-    public Integer getId() {
-        return id;
+    public void setBoard(String board) {
+        this.board = board;
     }
 
-    public Integer getMoveType() {
+    public String getMoveType() {
         return moveType;
     }
 
-    public void setMoveType(Integer moveType) {
+    public void setMoveType(String moveType) {
         this.moveType = moveType;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getGameId() {
+    public Long getGameId() {
         return gameId;
     }
 
-    public void setGameId(Integer gameId) {
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
+    }
+
+    public Move(String board, String moveType, Long gameId) {
+        this.board = board;
+        this.moveType = moveType;
         this.gameId = gameId;
     }
 }

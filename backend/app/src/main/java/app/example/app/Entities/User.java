@@ -21,16 +21,13 @@ public class User {
     private int id;
 
     @Column
-    @NotEmpty(message = "Username is required")
     @Size(min = 5, max = 50)
     private String username;
 
     @Column
-    @NotEmpty(message = "Email is required")
     private String email;
 
     @Column
-    @NotEmpty(message = "Password is required")
     private String password;
 
     @Transient

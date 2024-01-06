@@ -32,7 +32,9 @@ import {RxStompConfig} from "@stomp/rx-stomp";
 import {environment} from "../environments/environment";
 
 let connectHeaders;
+
 export const STOMP_CONFIG: RxStompConfig = {
-  brokerURL: `ws://${environment.location}:8080/ws`,
+  // @ts-ignore
+  brokerURL: `ws://${window["env"]["BASE_URL"]}:8080/ws`,
   reconnectDelay: 500
 }

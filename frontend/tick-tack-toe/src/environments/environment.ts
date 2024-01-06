@@ -1,5 +1,5 @@
 export const environment = {
 // @ts-ignore
-  location: window.env && window.env['location'] ? window.env['location'] : 'localhost',
-
+//   location: window['env']['BASE_URL']
+  location: window['env'] && window['env']['BASE_URL'] ? window['env']['BASE_URL'] : 'default_value',
 };

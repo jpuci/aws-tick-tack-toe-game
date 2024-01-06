@@ -1,0 +1,21 @@
+h1 {
+  color: black;
+  /*margin-bottom: -5px;*/
+  /*justify-content: center;*/
+  text-align: center;
+  margin-top: 20px;
+}
+h2 {
+  color: black;
+  /*margin-bottom: -5px;*/
+  /*justify-content: center;*/
+  text-align: center;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  /* Additional styling as needed */
+  margin-top: 10px; /* Example margin */
+  font-size: 14px; /* Example font size */
+}

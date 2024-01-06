@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2><span class="material-icons" [routerLink]="['/menu']">chevron_left</span> Leaderboard</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Username</th>
+      <th>Games Won</th>
+      <th>Games Lost</th>
+      <th>Games Drawn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of leaderBoard">
+      <td>{{ player.username }}</td>
+      <td>{{ player.wonGames }}</td>
+      <td>{{ player.lostGames }}</td>
+      <td>{{ player.drawGames }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

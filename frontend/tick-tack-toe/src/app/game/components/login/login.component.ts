@@ -6,6 +6,7 @@ import {Message} from "@stomp/stompjs";
 import {UserService} from "../../services/user.service";
 import {catchError, tap} from "rxjs";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,37 +18,41 @@ export class LoginComponent implements OnInit{
   receivedMessages: string[] = [];
   errorMessage: string = '';
   helper = new JwtHelperService();
+  isIncorrect= false;
   constructor(private readonly router: Router, private rxStompService: RxStompService, private userService: UserService) {
 
   }
 
   onSubmit(){
-    // this.onSendMessage()
-    // this.router.navigate(['/', 'game'])
       this.userService.login({
         username: this.username,
         password: this.password
       }).pipe(
         catchError(error => {
+          this.isIncorrect = true;
+          console.log("login failed")
           this.errorMessage = error.error
-          throw error
+          return of(null);
+
         }),
         tap((response: any) => {
-          localStorage.setItem("username", this.username)
-          // localStorage.setItem(environment.LOCAL_STORAGE_USER_ID, response.userId)
-          localStorage.setItem("jwtToken", response.token)
-          this.router.navigate(['/waiting']);
-          // this.parentComponent.setUsername();
+          if (response){
+            localStorage.setItem("username", this.username)
+            localStorage.setItem("jwtToken", response.accessToken);
+            this.router.navigate(['/menu']);
+          }
         })).subscribe();
   }
 
 
   ngOnInit(): void {
-    this.rxStompService.watch('/topic/greetings').subscribe((message: Message) => {
-      console.log(this.receivedMessages);
-      this.receivedMessages.push(JSON.parse(message.body).content);
-      localStorage.setItem('gameId', JSON.stringify(this.receivedMessages[this.receivedMessages.length-1]));
-    });
+    //@ts-ignore
+    console.log(window['env'])
+    // this.rxStompService.watch('/topic/greetings').subscribe((message: Message) => {
+    //   console.log(this.receivedMessages);
+    //   this.receivedMessages.push(JSON.parse(message.body).content);
+    //   localStorage.setItem('gameId', JSON.stringify(this.receivedMessages[this.receivedMessages.length-1]));
+    // });
     console.log("done init")
   }
 
