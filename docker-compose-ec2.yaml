@@ -1,0 +1,18 @@
+version: "3.4"
+services:
+  backend:
+    container_name: backend
+    hostname: backend
+    image: jpuci/aws-tick-tack-toe-backend
+    network_mode: "host"
+    env_file:
+      - .env
+      - domain.env
+
+
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    image: jpuci/aws-tick-tack-toe-frontend
+    network_mode: "host"
+    env_file: domain.env
