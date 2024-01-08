@@ -1,8 +1,12 @@
 Infractructure:
+
 **RDS**
+
 Create RDS as shown [here](https://www.youtube.com/watch?v=GSu1g9jvFhY)
 
+
 **User Pool**
+
 Create an aws user pool as shown in the begining of [this tutorial](https://www.youtube.com/watch?v=o2IM9oI6Eqk&ab_channel=SecurityinAction101) (not necesseary to use aws hosted login page). Make sure to enable ALLOW_USER_PASSWORD_AUTH in the client authentication flow. 
 The login (and registration if you allow self registration) methods need to be modified by adding SECRET_HASH parameter. A method for generating the secret hash can be found [here](https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash)
 If you do not allow self-registration you'll need to create a user through aws. To receive a token for that user you need to change the password. You can create an endpoint for that, or do it through aws console.
@@ -15,10 +19,14 @@ aws cognito-idp admin-initiate-auth --user-pool-id %USER POOL ID% --client-id %A
 aws cognito-idp admin-respond-to-auth-challenge --user-pool-id %USER POOL ID% --client-id %CLIENT ID% --challenge-name NEW_PASSWORD_REQUIRED --challenge-responses NEW_PASSWORD=%DESIRED PASSWORD%,USERNAME=%USERS USERNAME%,SECRET_HASH=%CALCULATED SECRET HASH% --session %SESSION KEY FROM PREVIOUS COMMAND with ""%
 ```
 
+
 **Cognito**
+
 Spring Boot integration with cognito as shown [here](https://dev.to/daviidy/api-security-how-to-implement-authentication-and-authorization-with-aws-cognito-in-spring-boot-4713?fbclid=IwAR1RlEKeoMiZwmdQf8b9IOl-8C1DKezTgGCButUdDape5mgLguxveRD9jQQ)
 
 **Docker**
+
+
 First the image was build using a dockerfile, then pushed to my public Dockerhub repository. 
 The final ec2 docker-compose.yaml was running from the images published to repository. 
   Pushing docker image to docker registry:
@@ -29,7 +37,10 @@ The final ec2 docker-compose.yaml was running from the images published to repos
     docker push user-name/repo-name
     ```
 
+
 **EC2**
+
+
 1. Create an EC2 instance on AWS
 2. To copy ec2-setup.sh to ec2 instance:
 ```
