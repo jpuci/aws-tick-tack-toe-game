@@ -1,0 +1,63 @@
+version: "3.4"
+services:
+
+  db:
+    container_name: db
+    hostname: db
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=tickdb
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=
+    networks:
+      - priv-network
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      retries: 30
+      interval: 2s
+
+  backend:
+    container_name: backend
+    hostname: backend
+    image: 237444586148.dkr.ecr.us-east-1.amazonaws.com/tic-tac-toe-backend
+    networks:
+      - priv-network
+    #    env_file:
+    #      - .env
+    #      - domain.env
+    environment:
+      SPRING_PROFILES_ACTIVE: elastic
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/tickdb?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: mysql
+      SPRING_DATASOURCE_PASSWORD:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_KEY:
+      BASE_URL: localhost
+      CROSS_ORIGIN: http://localhost
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    image: 237444586148.dkr.ecr.us-east-1.amazonaws.com/tic-tac-toe-frontend
+    networks:
+      - priv-network
+    environment:
+      BASE_URL: localhost
+      CROSS_ORIGIN: localhost
+    ports:
+      - "80:80"
+
+
+
+networks:
+  priv-network:
+    driver: bridge

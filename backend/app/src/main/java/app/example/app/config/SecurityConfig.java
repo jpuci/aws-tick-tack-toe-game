@@ -86,7 +86,6 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        //FIXME wymaga konfiguracji
                         .allowedOrigins(crossOrigin)
                         .allowedOriginPatterns("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
