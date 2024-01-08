@@ -75,7 +75,7 @@ and then run the setup script
 ```
 
 
-## Other (possibly) usefull thing:
+## Other (possibly) usefull things:
 
 The properties 
 ```
