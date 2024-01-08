@@ -3,6 +3,8 @@
 ### RDS
 
 Create RDS as shown [here](https://www.youtube.com/watch?v=GSu1g9jvFhY)
+![image](https://github.com/jpuci/aws-tick-tack-toe-game/assets/66960260/77086b30-e07f-40f3-ab27-d9585c47d894)
+
 
 
 ### User Pool
@@ -18,6 +20,7 @@ aws cognito-idp admin-initiate-auth --user-pool-id %USER POOL ID% --client-id %A
 ```
 aws cognito-idp admin-respond-to-auth-challenge --user-pool-id %USER POOL ID% --client-id %CLIENT ID% --challenge-name NEW_PASSWORD_REQUIRED --challenge-responses NEW_PASSWORD=%DESIRED PASSWORD%,USERNAME=%USERS USERNAME%,SECRET_HASH=%CALCULATED SECRET HASH% --session %SESSION KEY FROM PREVIOUS COMMAND with ""%
 ```
+![image](https://github.com/jpuci/aws-tick-tack-toe-game/assets/66960260/01e09418-e527-42ed-87c6-7420ee555701)
 
 
 ### Cognito
@@ -73,6 +76,8 @@ and then run the setup script
   ```
     docker compose -f docker-compose-ec2.yaml up -d --build
 ```
+
+![image](https://github.com/jpuci/aws-tick-tack-toe-game/assets/66960260/03a0a122-ddac-4ebe-9450-534eba868b33)
 
 
 ## Other (possibly) usefull things:
